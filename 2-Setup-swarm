@@ -11,6 +11,12 @@
 
 docker swarm init --advertise-addr=178.156.162.15
 
+##add a worker to this swarm
+#docker swarm join --token SWMTKN-1-5kr77bn2tiwao8y2m6qcg6qo3fyncrkigxoh5vjgn8fnbjs4kb-1zsqtiatfpw8vfx5n36recto0 178.156.162.15:2377
+
+##add a manager to this swarm run 'docker swarm join-token manager' and follow the instructions
+#docker swarm join-token manager
+
 ###################################
 # Etapa 2
 #
