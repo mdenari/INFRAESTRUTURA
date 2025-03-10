@@ -9,7 +9,7 @@
 
 # Inicia o Swarm
 
-docker swarm init --advertise-addr=000000
+docker swarm init --advertise-addr=178.156.162.15
 
 ###################################
 # Etapa 2
@@ -18,3 +18,5 @@ docker swarm init --advertise-addr=000000
 #
 
 docker network create --driver=overlay network_swarm_public
+###ATENÇÃO A REDE ANTERIOR CHAMADO network_public
+
