@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Faz o download da imagem do traefik v2
+docker pull portainer/portainer-ce:sts
+# Executa o Stack do portainer
+
+docker stack deploy --prune --detach=false --resolve-image always -c portainer.yaml portainer
