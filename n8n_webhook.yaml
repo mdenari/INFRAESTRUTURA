@@ -229,7 +229,7 @@ services:
         # Configura o Roteamento do Traefik
         - traefik.enable=true
         # Define o enderço do Webhook do N8N
-        - traefik.http.routers.n8n_webhook.rule=Host(`webhooks.agenciasynca.com.br`)
+        - traefik.http.routers.n8n_webhook.rule=Host(`webhook01pj03.hyperize.com.br`)
         # Redireciona o endereço para HTTPS
         - traefik.http.routers.n8n_webhook.entrypoints=websecure
         # Define o certificado SSL
