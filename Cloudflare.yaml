@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  cloudflared:
+    # Define a imagem do container
+    image: cloudflare/cloudflared:latest
+    # Define a rede que o container vai utilizar
+    networks:
+      - network_swarm_public
+    command: tunnel --no-autoupdate run --token eyJhIjoiOGI1OGIzOTcxYWY3M2E4NjM4MTY4NmQzYjNiMTVjMDIiLCJ0IjoiYjZkZjAyZjMtMjVjZi00NDliLTkzMGYtNjQyZTdhZmRlOWM4IiwicyI6IlpqZGhNell4TURjdE5UZzFOQzAwTW1RMUxUbGlaV0V0TmpnM016VmlaVEF4TmpBMSJ9 
+    # Define o modo de deploy do cloudflared
+    deploy:
+      # o modo global faz com que o serviço seja executado em todos os nós do cluster
+      mode: global
+
+networks:
+  network_swarm_public:
+    name: network_swarm_public
+    external: true
