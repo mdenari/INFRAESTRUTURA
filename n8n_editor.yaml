@@ -75,7 +75,7 @@ services:
       # Define a Porta http para o N8N (padrão: 5678)
       - N8N_PORT=5678
       # Configura o Host do Editor do N8N
-      - N8N_HOST=https://rpa01pj03.pj03mn01.hyperize.com.br
+      - N8N_HOST=rpa01pj03.pj03mn01.hyperize.com.br
       # Configura o Endereço competo do Editor (tem que deixar / no final)
       - N8N_EDITOR_BASE_URL=https://rpa01pj03.pj03mn01.hyperize.com.br/
       # Força o uso de SSL nas URL internas do N8N
