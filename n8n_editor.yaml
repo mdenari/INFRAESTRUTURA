@@ -25,7 +25,7 @@ services:
       #########################################################
       #########################################################
       # Gere uma nova chave aqui https://www.avast.com/random-password-generator#mac
-      - N8N_ENCRYPTION_KEY=r3djGX2vPoeL9zKL
+      - N8N_ENCRYPTION_KEY=r4djGf1vPteL9zKL
       # Configura o ambiente de execução do N8N
       - NODE_ENV=production
       # Habilita a Página de Métricas Públicas do N8N
@@ -63,7 +63,7 @@ services:
       # Configura o Usuário do Banco de Dados
       - DB_POSTGRESDB_USER=postgres
       # Configura a Senha do Banco de Dados
-      - DB_POSTGRESDB_PASSWORD=SENHA
+      - DB_POSTGRESDB_PASSWORD=iu2QpKf7HqwWcd
       #########################################################
       #########################################################
       #########################################################
@@ -74,14 +74,14 @@ services:
       # Define a Porta http para o N8N (padrão: 5678)
       - N8N_PORT=5678
       # Configura o Host do Editor do N8N
-      - N8N_HOST=workflows.agenciasynca.com.br
+      - N8N_HOST=https://rpa01pj03.pj03mn01.hyperize.com.br
       # Configura o Endereço competo do Editor (tem que deixar / no final)
-      - N8N_EDITOR_BASE_URL=https://workflows.agenciasynca.com.br/
+      - N8N_EDITOR_BASE_URL=https://rpa01pj03.pj03mn01.hyperize.com.br/
       # Força o uso de SSL nas URL internas do N8N
       - N8N_PROTOCOL=https
       # Configura o Endereço do Webhook
       # Pode ser subdomínio ou outro domínio
-      - WEBHOOK_URL=https://webhooks.agenciasynca.com.br/
+      - WEBHOOK_URL=https://webhook.pj03mn01.hyperize.com.br/
       # Configura o Caminho do Webhook
       - N8N_ENDPOINT_WEBHOOK=webhook
       #########################################################
@@ -198,7 +198,7 @@ services:
       # Configura a Senha do SMTP
       - N8N_SMTP_PASS=SENHA
       # Configura o E-mail de envio
-      - N8N_SMTP_SENDER=contato@promovaweb.com
+      - N8N_SMTP_SENDER=mauricio.denari@expertlabs.com.br
       # Configura o SSL do SMTP
       - N8N_SMTP_SSL=false
       # Report de Erros Sentry
@@ -214,9 +214,9 @@ services:
       placement:
         constraints:
           # Você pode rodar o Editor no Manager mesmo pois usa poucos recursos
-          - node.role == manager
+          # - node.role == manager
           # - node.hostname == worker1
-          # - node.labels.app == http # nome do label: app, valor do label: http
+           - node.labels.rpa-editor == true # nome do label: app, valor do label: http
       # Limitação
       resources:
         # Definição dos Limites de Recursos deste Serviço
@@ -230,7 +230,7 @@ services:
         # Configura o Roteamento do Traefik
         - traefik.enable=true
         # Define o enderço do Editor do N8N
-        - traefik.http.routers.n8n_editor.rule=Host(`workflows.agenciasynca.com.br`)
+        - traefik.http.routers.n8n_editor.rule=Host(`rpa01pj03.pj03mn01.hyperize.com.br`)
         # Redireciona o endereço para HTTPS
         - traefik.http.routers.n8n_editor.entrypoints=websecure
         # Define o certificado SSL
