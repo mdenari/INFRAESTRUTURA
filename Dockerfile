@@ -1,4 +1,4 @@
-FROM n8nio/n8n:latest
+FROM n8nio/n8n:1.86.0
 # Diretório de trabalho
 WORKDIR /home/node
 # Usuário root para instalar pacotes
