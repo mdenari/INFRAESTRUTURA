@@ -1,0 +1,66 @@
+##Video - https://promovaweb.com/n8n/courses/backup-e-restore-do-banco-de-dados-n8n-hfif028r5/lesson/57a24340-26d9-4a45-938f-56090308d065
+version: "3.7"
+# Definição dos Serviços
+services:
+  # Definição do Serviço do Backup do N8N
+  n8n_db_backup:
+    # imagem do docker
+    image: prodrigestivill/postgres-backup-local:latest
+    # Volumes onde armazenará os backups
+    volumes:
+      # Pasta onde será armazenado os backups
+      - /mnt/HC_Volume_102370452/backup:/backups
+      # Volume padrão do Postgres (tem que deixar mas não será usado)
+      - pg_backup:/var/lib/postgresql/data
+    # Rede do Swarm
+    networks:
+      - network_swarm_public
+    # Variáveis de Ambiente
+    environment:
+      # Endereço do Postgres
+      - POSTGRES_HOST=postgres
+      # Nome do Banco de Dados
+      - POSTGRES_DB=n8n
+      # Usuário do Banco de Dados
+      - POSTGRES_USER=postgres
+      # Senha do Banco de Dados
+      - POSTGRES_PASSWORD=iu2QpKf7HqwWcd
+      # Parâmetros para o pg_dump
+      - POSTGRES_EXTRA_OPTS=-Z6 --format=p --schema=public --blobs
+      # Agendamento do Backup
+      - SCHEDULE=0 23 * * *
+      # Quantidade de Backups a serem mantidos (dias)
+      - BACKUP_KEEP_DAYS=7
+      # Quantidade de Backups a serem mantidos (semanas)
+      - BACKUP_KEEP_WEEKS=4
+      # Quantidade de Backups a serem mantidos (meses)
+      - BACKUP_KEEP_MONTHS=4
+      # Timezone
+      - TZ=America/Sao_Paulo
+    deploy:
+      # O editor será executado no modo de replicação
+      mode: replicated
+      # Vamos ter apenas uma instância do backup
+      replicas: 1
+      # Configura o local de execução
+      placement:
+        constraints:
+          # Você pode rodar o Backup no Manager mesmo pois usa poucos recursos
+        # - node.role == manager01
+         - node.hostname == manager01
+      # Limitação
+      resources:
+        # Definição dos Limites de Recursos deste Serviço
+        limits:
+          # Define a quantidade de CPU para o Backup para evitar travamento do Host
+          cpus: "1"
+          # Define a quantidade de RAM para o Backup para evitar travamento do Host
+          memory: 1024M
+volumes:
+  pg_backup:
+    external: true
+    name: pg_backup
+networks:
+  network_swarm_public:
+    external: true
+    name: network_swarm_public
