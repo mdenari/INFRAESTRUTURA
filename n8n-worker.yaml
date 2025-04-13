@@ -42,10 +42,10 @@ services:
       # Configura a Permissão do Arquivo de Configuração
       - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
       # Habilita os Task Runners
-      - N8N_RUNNERS_ENABLED=false
+      - N8N_RUNNERS_ENABLED=true
       - N8N_RUNNERS_MODE=internal
       # Envia as execuções de teste para os workers
-      - OFFLOAD_MANUAL_EXECUTIONS_TO_WORKERS=false
+      - OFFLOAD_MANUAL_EXECUTIONS_TO_WORKERS=true
       #########################################################
       #########################################################
       #########################################################
