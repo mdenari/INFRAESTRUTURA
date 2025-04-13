@@ -26,7 +26,7 @@ ENV PATH="/home/node/venv/bin:$PATH"
 # Instalar bibliotecas Python no ambiente virtual
 RUN pip install --upgrade pip && \
     pip install pypdf  #PyPDF2  Ou use PyPDF2 se preferir
-RUN pip install PyPDF2  # Ou use PyPDF2 se preferir
+RUN pip install PyPDF2
 RUN pip install --no-cache-dir pdf2image pillow
 
 # Instalar bibliotecas Node.js globais necessárias para código customizado
