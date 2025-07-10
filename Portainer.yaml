@@ -21,7 +21,7 @@ services:
     secrets:
       - portainer_key
     networks:
-      - network_public
+      - network_swarm_public
     environment:
       - ENCRYPTION_KEY_PATH=/run/secrets/portainer_key  # Adicione esta linha
     deploy:
@@ -31,7 +31,7 @@ services:
         constraints: [node.role == manager]
       labels:
         - "traefik.enable=true"
-        - "traefik.docker.network=network_public"
+        - "traefik.docker.network=network_swarm_public"
         - "traefik.http.routers.portainer.rule=Host(`painel.pj03manager01.hyperize.com.br`)"
         - "traefik.http.routers.portainer.entrypoints=websecure"
         - "traefik.http.routers.portainer.priority=1"
@@ -44,7 +44,6 @@ networks:
     external: true
     attachable: true
     name: network_swarm_public
-
 volumes:
   portainer_data:
     external: true
